@@ -6,13 +6,35 @@
 
 //// GLOBAL STYLES /////
 
-html,
-body {
-  height: 100%;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 12px;
+  font-size: 1.6rem;
   color: $body-color-text;
+  line-height: 1.6;
+}
+
+
+.site-logo {
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  background-color: $secondary-color;
+  color: $primary-color;
+}
+
+.nav-link{
+  color: $primary-color;
 }
