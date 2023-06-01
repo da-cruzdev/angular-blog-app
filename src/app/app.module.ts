@@ -18,6 +18,7 @@ import { CommentFormComponent } from './comments/comment-form/comment-form.compo
 import { CommentListComponent } from './comments/comment-list/comment-list.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PostCardComponent } from './layouts/post-card/post-card.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CommentFormComponent,
     CommentListComponent,
     AboutUsComponent,
+    PostCardComponent,
   ],
   imports: [
     BrowserModule,
