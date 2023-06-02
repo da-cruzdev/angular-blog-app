@@ -47,3 +47,12 @@ body {
 .bg-theme {
   background-color: $primary-color;
 }
+
+.btn-theme {
+  height: 5.8rem;
+  border: none;
+  font-size: 1.3rem;
+  background-color: $primary-color;
+  color: #fff;
+  // width: 100%;
+}
