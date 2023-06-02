@@ -23,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostCardComponent } from './layouts/post-card/post-card.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { environment } from 'src/environments/environment.prod';
+import { CategoriesComponent } from './admin/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { environment } from 'src/environments/environment.prod';
     AboutUsComponent,
     PostCardComponent,
     DashboardComponent,
+    CategoriesComponent,
   ],
   imports: [
     BrowserModule,
