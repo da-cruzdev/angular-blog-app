@@ -48,6 +48,14 @@ body {
   background-color: $primary-color;
 }
 
+.bg-secondary-theme {
+  background-color: $secondary-color;
+}
+
+.text-theme-primary {
+  color: $primary-color;
+}
+
 .btn-theme {
   height: 5.8rem;
   border: none;
