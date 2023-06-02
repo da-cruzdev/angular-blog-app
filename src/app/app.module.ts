@@ -19,6 +19,7 @@ import { CommentListComponent } from './comments/comment-list/comment-list.compo
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostCardComponent } from './layouts/post-card/post-card.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { PostCardComponent } from './layouts/post-card/post-card.component';
     CommentListComponent,
     AboutUsComponent,
     PostCardComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
