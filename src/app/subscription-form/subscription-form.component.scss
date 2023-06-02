@@ -1,0 +1,25 @@
+@import "../../styles/variables";
+
+.card {
+  background-color: $secondary-color;
+}
+
+input.form-control {
+  height: 6rem;
+  padding-left: 2rem;
+  font-size: 1.3rem;
+  width: 100%;
+}
+
+.btn-sub {
+  height: 5.8rem;
+  border: none;
+  font-size: 1.3rem;
+  background-color: $primary-color;
+  color: #fff;
+  width: 100%;
+}
+
+.subs-text {
+  width: 50rem;
+}
