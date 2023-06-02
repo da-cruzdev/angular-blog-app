@@ -64,3 +64,11 @@ body {
   color: #fff;
   // width: 100%;
 }
+
+input[type="text"],
+input[type="email"] {
+  height: 6rem;
+  padding-left: 2rem;
+  font-size: 1.3rem;
+  width: 100%;
+}
