@@ -3,7 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { AngularFireModule } from '@angular/fire/compat';
-import { FirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { FormsModule } from '@angular/forms';
+import { DocumentReference, DocumentData } from 'firebase/firestore';
+import { SchedulerLike, Observable } from 'rxjs';
+import {
+  Action,
+  DocumentSnapshot,
+  QuerySnapshot,
+} from '@angular/fire/compat/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,9 +29,11 @@ import { CommentListComponent } from './comments/comment-list/comment-list.compo
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostCardComponent } from './layouts/post-card/post-card.component';
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { environment } from 'src/environments/environment.prod';
 import { CategoriesComponent } from './admin/categories/categories.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -50,8 +60,10 @@ import { CategoriesComponent } from './admin/categories/categories.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    FirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent],
