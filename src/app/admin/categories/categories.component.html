@@ -4,7 +4,7 @@
             <h3 class="text-center">New Categories</h3>
             <p class="text-center mb-5">You can add new categoriesfrom here..!</p>
 
-            <form class="row form-inline text-center" #categoryForm='ngForm' (ngSubmit)="onSumit(categoryForm)">
+            <form class="row form-inline text-center" #categoryForm='ngForm' (ngSubmit)="onSubmit(categoryForm)">
                 <div class="form-group col-md-10">
                     <input type="text" name="category" class="form-control shadow-effect"
                         placeholder="Add New Categories" ngModel>
@@ -14,5 +14,32 @@
                 </div>
             </form>
         </div>
+    </div>
+
+    <div class="row mt-5 mb-5">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 ">
+            <div class="card shadow-effect">
+                <div class="card-body">
+                    <table class="table row-border hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Category</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let category of categories | async as list; let i = index">
+                                <td>{{i + 1}}</td>
+                                <td> {{ category.category}} </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
     </div>
 </div>
