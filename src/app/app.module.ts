@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -67,6 +68,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularEditorModule,
     HttpClientModule,
     ReactiveFormsModule,
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
