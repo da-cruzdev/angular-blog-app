@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, take } from 'rxjs';
-import { Category } from 'src/app/models/category';
+import { Category, CategoryList } from 'src/app/models/category';
 import { CategoriesService } from 'src/app/services/categories.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { CategoriesService } from 'src/app/services/categories.service';
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent implements OnInit {
-  categories!: Observable<{ id: string; category: string }[]>;
+  categories!: Observable<CategoryList>;
   formCategory!: string;
   formStatus: string = 'Add';
   categoryId!: string;
