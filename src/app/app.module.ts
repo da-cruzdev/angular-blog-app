@@ -6,6 +6,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -62,6 +63,7 @@ import { NewPostComponent } from './admin/posts/new-post/new-post.component';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     ToastrModule.forRoot(),
+    AngularEditorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
