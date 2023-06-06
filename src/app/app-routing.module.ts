@@ -8,6 +8,8 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CategoriesComponent } from './admin/categories/categories.component';
+import { AllPostsComponent } from './admin/posts/all-posts/all-posts.component';
+import { NewPostComponent } from './admin/posts/new-post/new-post.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +22,8 @@ const routes: Routes = [
 
   { path: 'dashboard', component: DashboardComponent },
   { path: 'dashboard/categories', component: CategoriesComponent },
+  { path: 'dashboard/posts', component: AllPostsComponent },
+  { path: 'dashboard/posts/new', component: NewPostComponent },
 ];
 
 @NgModule({
