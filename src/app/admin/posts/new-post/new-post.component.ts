@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewPostComponent implements OnInit {
   permalink: string = '';
+  imgSrc: any = '/assets/placeholder-image.jpg';
+  selectedImg!: any;
   constructor() {}
 
   ngOnInit(): void {}
@@ -14,5 +16,15 @@ export class NewPostComponent implements OnInit {
   onTitleChanged($event: any) {
     const title = $event.target.value;
     this.permalink = title.replace(/\s/g, '-');
+  }
+
+  showPreview($event: any) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      this.imgSrc = e.target?.result;
+    };
+
+    reader.readAsDataURL($event.target.files[0]);
+    this.selectedImg = $event.target.files[0];
   }
 }
