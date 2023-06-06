@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { Category } from 'src/app/models/category';
 import { CategoriesService } from 'src/app/services/categories.service';
 
@@ -9,7 +9,11 @@ import { CategoriesService } from 'src/app/services/categories.service';
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent implements OnInit {
-  categories!: Observable<{ category: string }[]>;
+  categories!: Observable<{ id: string; category: string }[]>;
+  formCategory!: string;
+  formStatus: string = 'Add';
+  categoryId!: string;
+
   constructor(private categoryService: CategoriesService) {}
   ngOnInit(): void {
     this.categories = this.categoryService.getData$();
@@ -20,8 +24,18 @@ export class CategoriesComponent implements OnInit {
       category: formData.value.category,
     };
 
-    this.categoryService.saveData(categoryData);
+    if (this.formStatus == 'Add') {
+      this.categoryService.saveData(categoryData);
 
-    formData.reset();
+      formData.reset();
+    } else if (this.formStatus == 'Edit') {
+      this.categoryService.updateData(this.categoryId, categoryData);
+    }
+  }
+
+  onEdit(category: string, id: string) {
+    this.formCategory = category;
+    this.formStatus = 'Edit';
+    this.categoryId = id;
   }
 }
