@@ -4,6 +4,7 @@ import {
   addDoc,
   collection,
   collectionData,
+  deleteDoc,
   doc,
   updateDoc,
 } from '@angular/fire/firestore';
@@ -45,5 +46,12 @@ export class CategoriesService {
       .catch((err) => {
         this.toastr.error(err);
       });
+  }
+
+  deleteData(id: string) {
+    const docInstance = doc(this.firestore, 'categories', id);
+    deleteDoc(docInstance).then(() =>
+      this.toastr.success('Data deleted successfully')
+    );
   }
 }
