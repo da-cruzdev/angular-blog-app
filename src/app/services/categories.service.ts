@@ -10,6 +10,7 @@ import {
 } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, map } from 'rxjs';
+import { CategoryList } from '../models/category';
 
 @Injectable({
   providedIn: 'root',
@@ -32,9 +33,9 @@ export class CategoriesService {
 
   getData$() {
     const collectionInstance = collection(this.firestore, 'categories');
-    return collectionData(collectionInstance, { idField: 'id' }) as Observable<
-      { id: string; category: string }[]
-    >;
+    return collectionData(collectionInstance, {
+      idField: 'id',
+    }) as Observable<CategoryList>;
   }
 
   updateData(id: string, editData: any) {
