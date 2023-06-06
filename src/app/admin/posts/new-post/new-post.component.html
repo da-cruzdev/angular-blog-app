@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <form [formGroup]="postForm">
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-md-7">
                 <div class="card shadow-effect">
@@ -62,7 +62,9 @@
                             <select class="form-control" formControlName="category"
                                 [ngClass]="{'is-invalid': fc['category'].touched && fc['category'].invalid}">
                                 <option value="" selected>Please select a category</option>
-                                <option *ngFor="let category of categories" value=""> {{ category.category}} </option>
+                                <option *ngFor="let category of categories"
+                                    value="{{category.id}}-{{category.category}}"> {{
+                                    category.category}} </option>
                             </select>
                             <div *ngIf="fc['category'].errors?.['required']">
                                 <div class="alert alert-danger"
