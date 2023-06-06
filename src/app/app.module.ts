@@ -30,6 +30,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { AllPostsComponent } from './admin/posts/all-posts/all-posts.component';
 import { NewPostComponent } from './admin/posts/new-post/new-post.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { NewPostComponent } from './admin/posts/new-post/new-post.component';
     provideFirestore(() => getFirestore()),
     ToastrModule.forRoot(),
     AngularEditorModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
