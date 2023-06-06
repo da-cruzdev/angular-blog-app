@@ -6,23 +6,24 @@
         </div>
     </div>
 
-    <form>
+    <form [formGroup]="postForm">
         <div class="row">
             <div class="col-md-7">
                 <div class="card shadow-effect">
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Title</label>
-                            <input type="text" name="" class="form-control" (keyup)="onTitleChanged($event)">
+                            <input type="text" name="" class="form-control" (keyup)="onTitleChanged($event)"
+                                formControlName="title">
                         </div>
                         <div class="form-group">
                             <label for="">Permalink</label>
                             <input type="text" name="" class="form-control" [(ngModel)]="permalink" name="permalink"
-                                disabled>
+                                [disabled]="true" formControlName="permalink">
                         </div>
                         <div class="form-group">
                             <label for="">Excerpt</label>
-                            <textarea cols="30" rows="10" class="form-control"></textarea>
+                            <textarea cols="30" rows="10" class="form-control" formControlName="excerpt"></textarea>
                         </div>
                     </div>
                 </div>
@@ -32,7 +33,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Please select a post category</label>
-                            <select class="form-control">
+                            <select class="form-control" formControlName="category">
                                 <option value="" selected>Please select a category</option>
                                 <option *ngFor="let category of categories" value=""> {{ category.category}} </option>
                             </select>
@@ -40,7 +41,8 @@
                         <div class="form-group">
                             <label for="">Post image</label>
                             <img [src]="imgSrc" class="form-control img-fluid img-preview">
-                            <input type="file" class="form-control" accept="image/*" (change)="showPreview($event)">
+                            <input type="file" class="form-control" accept="image/*" (change)="showPreview($event)"
+                                formControlName="postImg">
                         </div>
                     </div>
                 </div>
@@ -52,7 +54,8 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Content</label>
-                            <angular-editor placeholder="add your content here"></angular-editor>
+                            <angular-editor placeholder="add your content here"
+                                formControlName="content"></angular-editor>
                         </div>
                     </div>
                 </div>

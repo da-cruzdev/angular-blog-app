@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { AngularFireModule } from '@angular/fire/compat';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularEditorModule } from '@kolkov/angular-editor';
@@ -66,6 +66,7 @@ import { HttpClientModule } from '@angular/common/http';
     ToastrModule.forRoot(),
     AngularEditorModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
