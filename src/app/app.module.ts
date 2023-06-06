@@ -27,6 +27,8 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { AllPostsComponent } from './admin/posts/all-posts/all-posts.component';
+import { NewPostComponent } from './admin/posts/new-post/new-post.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
     PostCardComponent,
     DashboardComponent,
     CategoriesComponent,
+    AllPostsComponent,
+    NewPostComponent,
   ],
   imports: [
     BrowserModule,
