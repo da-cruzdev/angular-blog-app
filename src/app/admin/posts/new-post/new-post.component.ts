@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoryList } from 'src/app/models/category';
 import { CategoriesService } from 'src/app/services/categories.service';
 
@@ -24,13 +24,17 @@ export class NewPostComponent implements OnInit {
   ngOnInit(): void {
     this.categoryService.getData$().subscribe((val) => (this.categories = val));
     this.postForm = this.fb.group({
-      title: [''],
-      permalink: [''],
-      excerpt: [''],
-      category: [''],
-      postImg: [''],
-      content: [''],
+      title: ['', [Validators.required, Validators.minLength(10)]],
+      permalink: ['', Validators.required],
+      excerpt: ['', [Validators.required, Validators.minLength(50)]],
+      category: ['', Validators.required],
+      postImg: ['', Validators.required],
+      content: ['', Validators.required],
     });
+  }
+
+  get fc() {
+    return this.postForm.controls;
   }
 
   onTitleChanged($event: any) {
