@@ -15,4 +15,6 @@ export class AllPostsComponent implements OnInit {
   ngOnInit(): void {
     this.posts = this.postService.getData$();
   }
+
+  onEdit() {}
 }

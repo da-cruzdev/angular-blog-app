@@ -5,6 +5,8 @@ import {
   addDoc,
   collection,
   collectionData,
+  doc,
+  docData,
 } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -50,5 +52,10 @@ export class PostsService {
     return collectionData(collectionInstance, {
       idField: 'id',
     }) as Observable<any>;
+  }
+
+  getOnePost$(id: string) {
+    const onePost = doc(this.firestore, 'posts', id);
+    return docData(onePost, { idField: 'id' });
   }
 }

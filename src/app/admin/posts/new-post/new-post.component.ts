@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { CategoryList } from 'src/app/models/category';
 import { Post } from 'src/app/models/post';
 import { CategoriesService } from 'src/app/services/categories.service';
@@ -17,23 +18,46 @@ export class NewPostComponent implements OnInit {
   categories!: CategoryList;
 
   postForm!: FormGroup;
+  post!: any;
+  formStatus: string = 'Add new';
 
   constructor(
     private categoryService: CategoriesService,
     private fb: FormBuilder,
-    private postService: PostsService
-  ) {}
+    private postService: PostsService,
+    private route: ActivatedRoute
+  ) {
+    this.route.queryParams.subscribe((val) => {
+      console.log(val);
+      this.postService.getOnePost$(val['id']).subscribe((postData) => {
+        this.post = postData;
+
+        this.postForm = this.fb.group({
+          title: [
+            this.post.title,
+            [Validators.required, Validators.minLength(10)],
+          ],
+          permalink: [this.post.permalink, Validators.required],
+          excerpt: [
+            this.post.excerpt,
+            [Validators.required, Validators.minLength(50)],
+          ],
+          category: [
+            `${this.post.category.categoryId}-${this.post.category.category}`,
+            Validators.required,
+          ],
+          postImg: ['', Validators.required],
+          content: [this.post.content, Validators.required],
+        });
+
+        this.imgSrc = this.post.postImgPath;
+        this.formStatus = 'Edit';
+      });
+    });
+  }
 
   ngOnInit(): void {
     this.categoryService.getData$().subscribe((val) => (this.categories = val));
-    this.postForm = this.fb.group({
-      title: ['', [Validators.required, Validators.minLength(10)]],
-      permalink: ['', Validators.required],
-      excerpt: ['', [Validators.required, Validators.minLength(50)]],
-      category: ['', Validators.required],
-      postImg: ['', Validators.required],
-      content: ['', Validators.required],
-    });
   }
 
   get fc() {
