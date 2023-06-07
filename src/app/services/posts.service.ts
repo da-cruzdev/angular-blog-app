@@ -25,14 +25,11 @@ export class PostsService {
     const filePath = `postIMG/${Date.now()}`;
     console.log(filePath);
     this.storage.upload(filePath, selectedImage).then(() => {
-      console.log('Post image uploaded successfully');
-
       this.storage
         .ref(filePath)
         .getDownloadURL()
         .subscribe((URL) => {
           postData.postImgPath = URL;
-          console.log(postData);
 
           this.saveData(postData);
         });
@@ -43,7 +40,8 @@ export class PostsService {
     const collectionData = collection(this.firestore, 'posts');
     addDoc(collectionData, postData).then(() => {
       this.toastr.success('Post saved successfully...!!');
-      this.router.navigate(['/posts']);
+
+      this.router.navigate(['/dashboard/posts']);
     });
   }
 
