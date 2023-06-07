@@ -11,4 +11,36 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-effect">
+                <div class="card-body">
+                    <table class="table row-border hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Post Image</th>
+                                <th>Title</th>
+                                <th>Excerpt</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let post of posts | async as list ; let i = index">
+                                <td>{{i + 1}}</td>
+                                <td> <img src='{{ post.postImgPath }}' class="img img-fluid"> </td>
+                                <td> {{post.title}} </td>
+                                <td> {{post.excerpt}} </td>
+                                <td> {{post.category.category}} </td>
+                                <td> {{post.createdAt.toMillis() | date}} </td>
+                                <td> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
