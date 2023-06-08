@@ -10,9 +10,12 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CategoriesComponent } from './admin/categories/categories.component';
 import { AllPostsComponent } from './admin/posts/all-posts/all-posts.component';
 import { NewPostComponent } from './admin/posts/new-post/new-post.component';
+import { LoginComponent } from './admin/auth/login/login.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+
   { path: 'category', component: SingleCategoryComponent },
   { path: 'post', component: SinglePostComponent },
 

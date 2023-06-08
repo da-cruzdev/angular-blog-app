@@ -32,6 +32,7 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { AllPostsComponent } from './admin/posts/all-posts/all-posts.component';
 import { NewPostComponent } from './admin/posts/new-post/new-post.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './admin/auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { HttpClientModule } from '@angular/common/http';
     CategoriesComponent,
     AllPostsComponent,
     NewPostComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
