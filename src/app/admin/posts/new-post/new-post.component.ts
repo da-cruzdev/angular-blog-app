@@ -30,30 +30,42 @@ export class NewPostComponent implements OnInit {
   ) {
     this.route.queryParams.subscribe((val) => {
       this.postId = val['id'];
-      this.postService.getOnePost$(val['id']).subscribe((postData) => {
-        this.post = postData;
 
-        this.postForm = this.fb.group({
-          title: [
-            this.post.title,
-            [Validators.required, Validators.minLength(10)],
-          ],
-          permalink: [{ value: this.post.permalink }, Validators.required],
-          excerpt: [
-            this.post.excerpt,
-            [Validators.required, Validators.minLength(50)],
-          ],
-          category: [
-            `${this.post.category.categoryId}-${this.post.category.category}`,
-            Validators.required,
-          ],
-          postImg: ['', Validators.required],
-          content: [this.post.content, Validators.required],
+      if (this.postId) {
+        this.postService.getOnePost$(val['id']).subscribe((postData) => {
+          this.post = postData;
+
+          this.postForm = this.fb.group({
+            title: [
+              this.post.title,
+              [Validators.required, Validators.minLength(10)],
+            ],
+            permalink: [{ value: this.post.permalink }, Validators.required],
+            excerpt: [
+              this.post.excerpt,
+              [Validators.required, Validators.minLength(50)],
+            ],
+            category: [
+              `${this.post.category.categoryId}-${this.post.category.category}`,
+              Validators.required,
+            ],
+            postImg: ['', Validators.required],
+            content: [this.post.content, Validators.required],
+          });
+
+          this.imgSrc = this.post.postImgPath;
+          this.formStatus = 'Edit';
         });
-
-        this.imgSrc = this.post.postImgPath;
-        this.formStatus = 'Edit';
-      });
+      } else {
+        this.postForm = this.fb.group({
+          title: ['', [Validators.required, Validators.minLength(10)]],
+          permalink: [{ value: '' }, Validators.required],
+          excerpt: ['', [Validators.required, Validators.minLength(50)]],
+          category: ['', Validators.required],
+          postImg: ['', Validators.required],
+          content: ['', Validators.required],
+        });
+      }
     });
   }
 
