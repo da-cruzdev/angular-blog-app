@@ -82,17 +82,13 @@ export class PostsService {
       });
   }
 
-  deleteImage(id: string, postImgPath?: any) {
-    if ((postImgPath = '')) {
-      this.deleteData(id);
-    } else {
-      this.storage.storage
-        .refFromURL(postImgPath)
-        .delete()
-        .then(() => {
-          this.deleteData(id);
-        });
-    }
+  deleteImage(id: string, postImgPath: string) {
+    this.storage.storage
+      .refFromURL(postImgPath)
+      .delete()
+      .then(() => {
+        this.deleteData(id);
+      });
   }
 
   deleteData(id: string) {
@@ -100,5 +96,17 @@ export class PostsService {
     deleteDoc(docInstance).then(() =>
       this.toastr.warning('Data deleted successfully')
     );
+  }
+
+  markFeatured(id: string, featuredData: any) {
+    const docInstance = doc(this.firestore, 'posts', id);
+    updateDoc(docInstance, featuredData)
+      .then(() => {
+        this.toastr.info('Featured status updated...!!!');
+        this.router.navigate(['/dashboard/posts']);
+      })
+      .catch((err) => {
+        this.toastr.error(err);
+      });
   }
 }
