@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { SingleCategoryComponent } from './pages/single-category/single-category.component';
-import { SinglePostComponent } from './pages/single-post/single-post.component';
-import { AboutUsComponent } from './pages/about-us/about-us.component';
-import { ContactUsComponent } from './pages/contact-us/contact-us.component';
-import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-and-conditions.component';
+import { HomeComponent } from './client/pages/home/home.component';
+import { SingleCategoryComponent } from './client/pages/single-category/single-category.component';
+import { SinglePostComponent } from './client/pages/single-post/single-post.component';
+import { AboutUsComponent } from './client/pages/about-us/about-us.component';
+import { ContactUsComponent } from './client/pages/contact-us/contact-us.component';
+import { TermsAndConditionsComponent } from './client/pages/terms-and-conditions/terms-and-conditions.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { CategoriesComponent } from './admin/categories/categories.component';
 import { AllPostsComponent } from './admin/posts/all-posts/all-posts.component';
