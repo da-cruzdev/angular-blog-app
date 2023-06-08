@@ -7,6 +7,7 @@ import {
   collectionData,
   doc,
   docData,
+  updateDoc,
 } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -23,7 +24,12 @@ export class PostsService {
     private router: Router
   ) {}
 
-  uploadImage(selectedImage: any, postData: any) {
+  uploadImage(
+    selectedImage: any,
+    postData: any,
+    formStatus: string,
+    id: string
+  ) {
     const filePath = `postIMG/${Date.now()}`;
     console.log(filePath);
     this.storage.upload(filePath, selectedImage).then(() => {
@@ -33,7 +39,11 @@ export class PostsService {
         .subscribe((URL) => {
           postData.postImgPath = URL;
 
-          this.saveData(postData);
+          if (formStatus == 'Edit') {
+            this.updateData(id, postData);
+          } else {
+            this.saveData(postData);
+          }
         });
     });
   }
@@ -57,5 +67,17 @@ export class PostsService {
   getOnePost$(id: string) {
     const onePost = doc(this.firestore, 'posts', id);
     return docData(onePost, { idField: 'id' });
+  }
+
+  updateData(id: string, postData: any) {
+    const docInstance = doc(this.firestore, 'posts', id);
+    updateDoc(docInstance, postData)
+      .then(() => {
+        this.toastr.success('Data updated successfully...!!!');
+        this.router.navigate(['/dashboard/posts']);
+      })
+      .catch((err) => {
+        this.toastr.error(err);
+      });
   }
 }

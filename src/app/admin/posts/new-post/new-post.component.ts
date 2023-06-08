@@ -20,6 +20,7 @@ export class NewPostComponent implements OnInit {
   postForm!: FormGroup;
   post!: any;
   formStatus: string = 'Add new';
+  postId!: string;
 
   constructor(
     private categoryService: CategoriesService,
@@ -28,7 +29,7 @@ export class NewPostComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.route.queryParams.subscribe((val) => {
-      console.log(val);
+      this.postId = val['id'];
       this.postService.getOnePost$(val['id']).subscribe((postData) => {
         this.post = postData;
 
@@ -37,7 +38,7 @@ export class NewPostComponent implements OnInit {
             this.post.title,
             [Validators.required, Validators.minLength(10)],
           ],
-          permalink: [this.post.permalink, Validators.required],
+          permalink: [{ value: this.post.permalink }, Validators.required],
           excerpt: [
             this.post.excerpt,
             [Validators.required, Validators.minLength(50)],
@@ -96,7 +97,12 @@ export class NewPostComponent implements OnInit {
       status: 'new',
       createdAt: new Date(),
     };
-    this.postService.uploadImage(this.selectedImg, postData);
+    this.postService.uploadImage(
+      this.selectedImg,
+      postData,
+      this.formStatus,
+      this.postId
+    );
 
     this.postForm.reset();
     this.imgSrc = '/assets/placeholder-image.jpg';
