@@ -12,55 +12,25 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './layouts/header/header.component';
-import { CategoryNavbarComponent } from './layouts/category-navbar/category-navbar.component';
-import { FooterComponent } from './layouts/footer/footer.component';
-import { HomeComponent } from './client/pages/home/home.component';
-import { SingleCategoryComponent } from './client/pages/single-category/single-category.component';
-import { SinglePostComponent } from './client/pages/single-post/single-post.component';
-import { TermsAndConditionsComponent } from './client/pages/terms-and-conditions/terms-and-conditions.component';
-import { ContactUsComponent } from './client/pages/contact-us/contact-us.component';
-import { SubscriptionFormComponent } from './subscription-form/subscription-form.component';
-import { CommentFormComponent } from './comments/comment-form/comment-form.component';
-import { CommentListComponent } from './comments/comment-list/comment-list.component';
-import { AboutUsComponent } from './client/pages/about-us/about-us.component';
-import { PostCardComponent } from './layouts/post-card/post-card.component';
-import { CategoriesComponent } from './admin/categories/categories.component';
+
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { AllPostsComponent } from './admin/posts/all-posts/all-posts.component';
-import { NewPostComponent } from './admin/posts/new-post/new-post.component';
+
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './admin/auth/login/login.component';
+import { ClientModule } from './client/client.module';
+import { SharedModule } from './shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    CategoryNavbarComponent,
-    FooterComponent,
-    HomeComponent,
-    SingleCategoryComponent,
-    SinglePostComponent,
-    TermsAndConditionsComponent,
-    ContactUsComponent,
-    SubscriptionFormComponent,
-    CommentFormComponent,
-    CommentListComponent,
-    AboutUsComponent,
-    PostCardComponent,
-    DashboardComponent,
-    CategoriesComponent,
-    AllPostsComponent,
-    NewPostComponent,
-    LoginComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    AngularFireModule,
+    SharedModule,
+    ClientModule,
     MatToolbarModule,
     MatButtonModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -73,6 +43,7 @@ import { LoginComponent } from './admin/auth/login/login.component';
     ReactiveFormsModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

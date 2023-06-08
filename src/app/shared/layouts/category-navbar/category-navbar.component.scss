@@ -1,11 +1,11 @@
-@import '../../../styles/variables';
+@import "../../../../styles/variables";
 
 nav {
-    margin-top: 10rem;
-    height: 5rem;
-    background-color: $navbar-footer-color;
+  margin-top: 10rem;
+  height: 5rem;
+  background-color: $navbar-footer-color;
 }
 
-.nav-link{
-    text-transform: uppercase;
+.nav-link {
+  text-transform: uppercase;
 }

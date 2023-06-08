@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { CategoryList } from 'src/app/models/category';
-import { Post } from 'src/app/models/post';
-import { CategoriesService } from 'src/app/services/categories.service';
-import { PostsService } from 'src/app/services/posts.service';
+import { CategoryList } from 'src/app/shared/models/category';
+import { Post } from 'src/app/shared/models/post';
+import { CategoriesService } from 'src/app/shared/services/categories.service';
+import { PostsService } from 'src/app/shared/services/posts.service';
 
 @Component({
   selector: 'app-new-post',
