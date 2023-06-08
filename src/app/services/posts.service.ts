@@ -5,6 +5,7 @@ import {
   addDoc,
   collection,
   collectionData,
+  deleteDoc,
   doc,
   docData,
   updateDoc,
@@ -79,5 +80,25 @@ export class PostsService {
       .catch((err) => {
         this.toastr.error(err);
       });
+  }
+
+  deleteImage(id: string, postImgPath?: any) {
+    if ((postImgPath = '')) {
+      this.deleteData(id);
+    } else {
+      this.storage.storage
+        .refFromURL(postImgPath)
+        .delete()
+        .then(() => {
+          this.deleteData(id);
+        });
+    }
+  }
+
+  deleteData(id: string) {
+    const docInstance = doc(this.firestore, 'posts', id);
+    deleteDoc(docInstance).then(() =>
+      this.toastr.warning('Data deleted successfully')
+    );
   }
 }

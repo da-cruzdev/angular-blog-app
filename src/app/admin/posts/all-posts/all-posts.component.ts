@@ -16,5 +16,7 @@ export class AllPostsComponent implements OnInit {
     this.posts = this.postService.getData$();
   }
 
-  onEdit() {}
+  onDelete(id: string, postImgPath: string) {
+    this.postService.deleteImage(postImgPath, id);
+  }
 }
