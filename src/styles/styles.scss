@@ -61,14 +61,15 @@ body {
 .btn-theme {
   height: 5.8rem;
   border: none;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   background-color: $primary-color;
   color: #fff;
   // width: 100%;
 }
 
 input[type="text"],
-input[type="email"] {
+input[type="email"],
+input[type="password"] {
   height: 6rem;
   padding-left: 2rem;
   font-size: 1.3rem;
