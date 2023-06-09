@@ -3,7 +3,7 @@
     <a href="#" class="site-logo">ANG-BLOG</a>
   </div>
 
-  <div class="container justify-content-center">
+  <div class="container justify-content-center" *ngIf="isLogIn$ | async">
     <a href="#" class="me-3">{{userEmail}}</a>
     <button class="btn btn-info btn-sm bg-secondary-theme theme-text-primary" (click)="onLogout()">Logout</button>
   </div>
