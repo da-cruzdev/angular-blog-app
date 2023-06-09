@@ -54,7 +54,7 @@ export class PostsService {
     addDoc(collectionData, postData).then(() => {
       this.toastr.success('Post saved successfully...!!');
 
-      this.router.navigate(['/dashboard/posts']);
+      this.router.navigate(['/auth/posts']);
     });
   }
 
@@ -75,7 +75,7 @@ export class PostsService {
     updateDoc(docInstance, postData)
       .then(() => {
         this.toastr.success('Data updated successfully...!!!');
-        this.router.navigate(['/dashboard/posts']);
+        this.router.navigate(['/auth/posts']);
       })
       .catch((err) => {
         this.toastr.error(err);
@@ -103,7 +103,7 @@ export class PostsService {
     updateDoc(docInstance, featuredData)
       .then(() => {
         this.toastr.info('Featured status updated...!!!');
-        this.router.navigate(['/dashboard/posts']);
+        this.router.navigate(['/auth/posts']);
       })
       .catch((err) => {
         this.toastr.error(err);

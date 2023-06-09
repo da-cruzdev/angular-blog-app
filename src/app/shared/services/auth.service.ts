@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  isLoggedInGuard: boolean = false;
+  isLoggedInGuard: boolean = true;
 
   constructor(
     private auth: AngularFireAuth,
@@ -25,7 +25,7 @@ export class AuthService {
         this.loadUser();
         this.isLoggedInGuard = true;
         this.loggedIn.next(true);
-        this.router.navigate(['/login/dashboard']);
+        this.router.navigate(['/auth/dashboard']);
         console.log('========================> Redirected::!!!');
       })
       .catch((err) => {
@@ -47,7 +47,7 @@ export class AuthService {
       localStorage.removeItem('user');
       this.loggedIn.next(false);
       this.isLoggedInGuard = false;
-      this.router.navigate(['/login']);
+      this.router.navigate(['/auth/login']);
     });
   }
 

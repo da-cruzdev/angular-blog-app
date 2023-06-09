@@ -8,22 +8,22 @@ import { NewPostComponent } from './posts/new-post/new-post.component';
 import { authGuard } from '../shared/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,
     // canActivate: [authGuard],
   },
   {
-    path: 'dashboard/categories',
+    path: 'categories',
     component: CategoriesComponent,
   },
   {
-    path: 'dashboard/posts',
+    path: 'posts',
     component: AllPostsComponent,
   },
   {
-    path: 'dashboard/posts/new',
+    path: 'posts/new',
     component: NewPostComponent,
   },
 ];

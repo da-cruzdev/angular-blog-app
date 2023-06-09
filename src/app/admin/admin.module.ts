@@ -8,6 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { LoginComponent } from './auth/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 const components = [
   CategoriesComponent,
@@ -25,6 +27,8 @@ const components = [
     ReactiveFormsModule,
     FormsModule,
     AdminRoutingModule,
+    HttpClientModule,
+    AngularEditorModule,
   ],
   exports: [...components],
 })

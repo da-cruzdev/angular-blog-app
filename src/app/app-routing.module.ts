@@ -14,7 +14,7 @@ const routes: Routes = [
       import('./client/client.module').then((m) => m.ClientModule),
   },
   {
-    path: 'login',
+    path: 'auth',
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
   },
