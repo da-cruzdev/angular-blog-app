@@ -7,7 +7,7 @@ import { AllPostsComponent } from './posts/all-posts/all-posts.component';
 import { NewPostComponent } from './posts/new-post/new-post.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'dashboard/categories', component: CategoriesComponent },
   { path: 'dashboard/posts', component: AllPostsComponent },

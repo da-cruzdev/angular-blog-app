@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { SubscriptionFormComponent } from './components/subscription-form/subscription-form.component';
 import { CommentListComponent } from './components/comments/comment-list/comment-list.component';
 import { CommentFormComponent } from './components/comments/comment-form/comment-form.component';
+import { ClientRoutingModule } from './client-routing.module';
 
 const components = [
   HomeComponent,
@@ -25,7 +26,7 @@ const components = [
 
 @NgModule({
   declarations: [...components],
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, ClientRoutingModule],
   exports: [...components],
 })
 export class ClientModule {}
