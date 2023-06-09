@@ -18,12 +18,26 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((logRef) => {
         this.toastr.success('Logged in successfully!!!!');
-        this.router.navigate(['/dashboard']);
+        this.loadUser();
+        this.router.navigate(['/login/dashboard']);
       })
       .catch((err) => {
         console.log(err);
 
         this.toastr.error(err);
       });
+  }
+
+  loadUser() {
+    this.auth.authState.subscribe((user) => {
+      localStorage.setItem('user', JSON.stringify(user));
+    });
+  }
+
+  logOut() {
+    this.auth.signOut().then(() => {
+      this.toastr.success('User log out successfully...!!!');
+      this.router.navigate(['/login']);
+    });
   }
 }
